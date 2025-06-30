@@ -24,30 +24,35 @@ const Ranking = () => {
   if (error) return <p>Error: {error}</p>;
 
     return (
-        <div className=''>
+        <div className='ranking-container'>
             <table className="table table-dark ranking-table">
-                <thead>
-                    <tr>
-                    <th>#</th>
-                    <th>Usuario</th>
-                    <th>Total Wager</th>
-                    <th>Premio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {ranking.map((item, index) => (
+            <thead>
+                <tr>
+                <th>#</th>
+                <th>Usuario</th>
+                <th>Total Wager</th>
+                <th>Premio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {ranking.map((item, index) => {
+                const medal = item.rank === 1 ? '🥇' :
+                                item.rank === 2 ? '🥈' :
+                                item.rank === 3 ? '🥉' : '';
+
+                return (
                     <tr key={index + 1}>
-                        <td>{item.rank}</td>
-                        <td>{item.username}</td>
-                        <td>{item.wagerAmount}</td>
-                        <td>{item.prize}</td>
+                    <td>{medal || item.rank}</td>
+                    <td>{item.username}</td>
+                    <td>{item.formattedWaggerAmount}</td>
+                    <td>${item.prize}</td>
                     </tr>
-                    ))}
-                </tbody>
+                );
+                })}
+            </tbody>
             </table>
         </div>
-
-    )
+        );
 }
 
 export default Ranking;

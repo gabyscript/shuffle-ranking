@@ -1,4 +1,5 @@
 import { RANKING_PRIZES } from "../const/rankingPrizes";
+import { formatCurrency } from "../const/formatCurrency";
 
 export async function fetchRankingData() {
   try {
@@ -18,7 +19,8 @@ export async function fetchRankingData() {
         .map((user, index) => ({
             ...user,
             rank: index + 1,
-            prize: RANKING_PRIZES[index] ?? 0
+            prize: RANKING_PRIZES[index] ?? 0,
+            formattedWaggerAmount: formatCurrency(user.wagerAmount)
         }));
 
     console.log('Ranking data:', filteredData);
