@@ -35,12 +35,15 @@ const Countdown = () => {
   }
 
   return (
-    <div>
-      <h2>💸 SHUFFLE WAGER RACE - $2000 USD EN PREMIOS 💸</h2>
-      <h3>🔥 ¡Los 10 que más apuesten se reparten el pozo! 🔥</h3>
-      <p>
-        Aun queda: {timeLeft.days} días, {timeLeft.hours} horas, {timeLeft.minutes} minutos, {timeLeft.seconds} segundos
-      </p>
+    <div className="countdown-container">
+      <h2 className="title">💸 SHUFFLE WAGER RACE - $2000 USD EN PREMIOS 💸</h2>
+      <h3 className="subtitle">🔥 ¡Los 10 que más apuesten se reparten el pozo! 🔥</h3>
+      <h3 className="countdown"> 
+        {String(timeLeft.days).padStart(2, '0')}d: 
+        {String(timeLeft.hours).padStart(2, '0')}: 
+        {String(timeLeft.minutes).padStart(2, '0')}: 
+        {String(timeLeft.seconds).padStart(2, '0')}
+      </h3>
     </div>
   );
 };

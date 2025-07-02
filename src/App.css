@@ -62,3 +62,47 @@ body {
   background-color: #2a2a2a;
   transition: background-color 0.2s ease-in-out;
 }
+
+.countdown-container {
+  text-align: center;
+  padding: 1rem;
+  color: #00ffe1;
+  font-family: 'Orbitron', 'Segoe UI', sans-serif;
+  background: radial-gradient(circle, #0f0f0f, #1a1a1a);
+  border: 2px solid #ff00c8;
+  box-shadow: 0 0 20px #ff00c8aa, 0 0 10px #ff00c8aa;
+  border-radius: 16px;
+  max-width: 700px;
+  margin: 1rem auto;
+}
+
+.title {
+  color: #ff00c8;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 5px #ff00c8aa;
+}
+
+.subtitle {
+  color: #ffd700;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 5px #ffd700aa;
+}
+
+.countdown {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff00c8;;
+  text-shadow: 0 0 10px #ff00c8, 0 0 20px #ff00c8;
+  letter-spacing: 0.2rem;
+}
+
+.countdown-finished {
+  color: #ff3333;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px #ff0000aa;
+}
