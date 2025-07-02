@@ -13,6 +13,12 @@ body {
   padding: 0;
 }
 
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .ranking-container {
   display: flex;
   justify-content: center;

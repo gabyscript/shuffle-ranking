@@ -3,8 +3,21 @@ import { formatCurrency } from "../const/formatCurrency";
 
 export async function fetchRankingData() {
   try {
-    const response = await fetch('https://affiliate.shuffle.com/stats/5bf0a7d3-9fac-4cb6-b1e9-3f01faf639ec');
+    console.log('Entorno:', import.meta.env.DEV ? 'Desarrollo' : 'Producción');
 
+    const id = "5bf0a7d3-9fac-4cb6-b1e9-3f01faf639ec";
+
+    const baseUrl = import.meta.env.DEV
+      ? `/api/stats/${id}`
+      : `https://affiliate.shuffle.com/stats/${id}`;    
+
+    const startTime = Math.floor(new Date('2025-07-02T00:00:00Z').getTime() / 1000);
+    const endTime = Math.floor(new Date('2025-07-17T23:59:59Z').getTime() / 1000);
+    console.log(startTime, endTime)
+
+    const url = `${baseUrl}?startTime=${startTime}&endTime=${endTime}`;
+
+    const response = await fetch(url);
     console.log('HTTP response:', response);
 
     if (!response.ok) {
@@ -28,6 +41,6 @@ export async function fetchRankingData() {
 
   } catch (error) {
     console.error('Error en fetchRankingData:', error);
-    throw error; // vuelve a lanzar para que el componente pueda capturar el error
+    throw error;
   }
 }

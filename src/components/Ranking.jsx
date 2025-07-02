@@ -36,9 +36,9 @@ const Ranking = () => {
             </thead>
             <tbody>
                 {ranking.map((item, index) => {
-                const medal = item.rank === 1 ? '🥇' :
-                                item.rank === 2 ? '🥈' :
-                                item.rank === 3 ? '🥉' : '';
+                const medal = item.rank === 1 ? '1 🥇' :
+                                item.rank === 2 ? '2 🥈' :
+                                item.rank === 3 ? '3 🥉' : '';
 
                 return (
                     <tr key={index + 1}>
