@@ -1,6 +1,8 @@
 import { RANKING_PRIZES } from "../const/rankingPrizes";
 import { formatCurrency } from "../const/formatCurrency";
 
+const BACKUP_KEY = 'ranking_backup';
+
 export async function fetchRankingData() {
   try {
     console.log('Entorno:', import.meta.env.DEV ? 'Desarrollo' : 'Producción');
@@ -37,10 +39,20 @@ export async function fetchRankingData() {
         }));
 
     console.log('Ranking data:', filteredData);
+
+    localStorage.setItem(BACKUP_KEY, JSON.stringify(filteredData));
+
     return filteredData;
 
   } catch (error) {
     console.error('Error en fetchRankingData:', error);
+
+    const cached = localStorage.getItem(BACKUP_KEY);
+    if (cached) {
+      console.warn('Usando datos cacheados en localStorage');
+      return JSON.parse(cached);
+    }
+
     throw error;
   }
 }
