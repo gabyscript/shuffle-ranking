@@ -23,7 +23,8 @@ export async function fetchRankingData() {
     console.log('HTTP response:', response);
 
     if (!response.ok) {
-      throw new Error(`Error al obtener datos del ranking: ${response.status}`);
+      throw new Error(`No se pudieron obtener los datos del ranking (Código: ${response.status}).
+        \nAsegúrate de desactivar los bloqueadores de anuncios en este sitio para acceder a la información completa.`);
     }
     
     const data = await response.json();
