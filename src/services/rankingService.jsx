@@ -6,7 +6,7 @@ const BACKUP_KEY = 'ranking_backup';
 export async function fetchRankingData() {
   try {
     const startTime = Math.floor(new Date('2025-07-02T00:00:00Z').getTime() / 1000);
-    const endTime = Math.floor(new Date('2025-07-18T02:29:59Z').getTime() / 1000);
+    const endTime = Math.floor(new Date('2025-07-18T03:29:59Z').getTime() / 1000);
 
     const url = `/.netlify/functions/ranking?startTime=${startTime}&endTime=${endTime}`;
     const response = await fetch(url);
