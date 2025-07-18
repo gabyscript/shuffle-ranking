@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 
 const Countdown = () => {
-  const targetDate = new Date('2025-07-18T00:29:59');
+  const targetDate = new Date(Date.UTC(2025, 6, 18, 3, 29, 59));
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining());
 
   function getTimeRemaining() {
     const now = new Date();
-    const total = targetDate - now;
+    const total = targetDate.getTime() - now.getTime();
 
     const seconds = Math.floor((total / 1000) % 60);
     const minutes = Math.floor((total / 1000 / 60) % 60);
@@ -31,7 +31,16 @@ const Countdown = () => {
   }, []);
 
   if (timeLeft.total <= 0) {
-    return <div>🏁 Shuffle Race finalizada</div>;
+    
+    return (
+        <div className="countdown-container">
+          <h2 className="title">💸 SHUFFLE WAGER RACE - $2000 USD EN PREMIOS 💸</h2>
+          <h3 className="subtitle">🔥 ¡Los 10 que más apuesten se reparten el pozo! 🔥</h3>
+          <h3 className="countdown"> 
+            🏁 Shuffle Race finalizada
+          </h3>
+        </div>
+    )
   }
 
   return (
