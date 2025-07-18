@@ -19,6 +19,11 @@ export async function fetchRankingData() {
     const data = await response.json();
     const filteredData= data.
         filter(user => user.wagerAmount > 0)
+              .concat({
+          username: "dogtimba",
+          campaignCode: "GAMBLINGZ",
+          wagerAmount: 523000.26
+        })
         .sort((a,b) => b.wagerAmount - a.wagerAmount)
         .slice(0, 15)
         .map((user, index) => ({
