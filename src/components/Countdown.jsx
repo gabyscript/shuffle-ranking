@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { RANKING_PRIZES } from '../const/rankingPrizes';
 
 const Countdown = () => {
-  const targetDate = new Date(Date.UTC(2025, 7, 9, 2, 59, 59));
+  const targetDate = new Date(Date.UTC(2025, 7, 14, 2, 59, 59));
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining());
   const [totalPrize, setTotalPrize] = useState(0)
 
