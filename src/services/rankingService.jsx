@@ -17,8 +17,7 @@ export async function fetchRankingData() {
     }
     
     const data = await response.json();
-    const filteredData= data.
-        filter(user => user.wagerAmount > 0)
+    const filteredData= data.filter(user => user.wagerAmount > 0)
         .sort((a,b) => b.wagerAmount - a.wagerAmount)
         .slice(0, 15)
         .map((user, index) => ({
@@ -28,14 +27,12 @@ export async function fetchRankingData() {
             formattedWaggerAmount: formatCurrency(user.wagerAmount)
         }));
 
-    console.log('Ranking data:', filteredData);
-
     localStorage.setItem(BACKUP_KEY, JSON.stringify(filteredData));
 
     return filteredData;
 
   } catch (error) {
-    console.error('Error en fetchRankingData:', error);
+    console.error("Error en fetchRankingData", error);
 
     const cached = localStorage.getItem(BACKUP_KEY);
     if (cached) {

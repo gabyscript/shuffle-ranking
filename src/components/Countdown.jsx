@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import { RANKING_PRIZES } from '../const/rankingPrizes';
 
 const Countdown = () => {
   const targetDate = new Date(Date.UTC(2025, 7, 9, 2, 59, 59));
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining());
+  const [totalPrize, setTotalPrize] = useState(0)
 
   function getTimeRemaining() {
     const now = new Date();
@@ -30,11 +32,15 @@ const Countdown = () => {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    setTotalPrize(RANKING_PRIZES.reduce((acc, curr) => acc + curr, 0))
+  },[])
+
   if (timeLeft.total <= 0) {
     
     return (
         <div className="countdown-container">
-          <h2 className="title">💸 SHUFFLE WAGER RACE - $3000 USD EN PREMIOS 💸</h2>
+          <h2 className="title">💸 SHUFFLE WAGER RACE - ${totalPrize} USD EN PREMIOS 💸</h2>
           <h3 className="subtitle">🔥 ¡Los 10 que más apuesten se reparten el pozo! 🔥</h3>
           <h3 className="countdown"> 
             🏁 Shuffle Race finalizada
@@ -45,7 +51,7 @@ const Countdown = () => {
 
   return (
     <div className="countdown-container">
-      <h2 className="title">💸 SHUFFLE WAGER RACE - $3000 USD EN PREMIOS 💸</h2>
+      <h2 className="title">💸 SHUFFLE WAGER RACE - ${totalPrize} USD EN PREMIOS 💸</h2>
       <h3 className="subtitle">🔥 ¡Los 10 que más apuesten se reparten el pozo! 🔥</h3>
       <h3 className="countdown"> 
         {String(timeLeft.days).padStart(2, '0')}d: 
