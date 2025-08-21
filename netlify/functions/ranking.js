@@ -3,11 +3,12 @@ export async function handler(event) {
   const { startTime, endTime } = event.queryStringParameters;
 
   const url = `https://affiliate.shuffle.com/stats/${ID}?startTime=${startTime}&endTime=${endTime}`;
+  const urlWithoutTime = `https://affiliate.shuffle.com/stats/${ID}`;
 
-  console.log("URL en ranking netlify:", url)
+  console.log("URL en ranking netlify:", urlWithoutTime)
 
   try {
-    const res = await fetch(url);
+    const res = await fetch(urlWithoutTime);
     const data = await res.json();
 
     return {
